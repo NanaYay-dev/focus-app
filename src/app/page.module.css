@@ -1,0 +1,29 @@
+.page {
+  min-height: 100vh;
+  background: #05060b;
+  color: white;
+}
+
+.frame {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.contentGlow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(114, 77, 255, 0.1), transparent 28%),
+    radial-gradient(circle at 70% 40%, rgba(73, 173, 255, 0.08), transparent 26%);
+}
