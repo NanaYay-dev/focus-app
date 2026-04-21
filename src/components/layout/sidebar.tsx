@@ -1,15 +1,19 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   ChartColumn,
   ChevronLeft,
   House,
   KanbanSquare,
   Moon,
-  Settings,
+  Sun,
   TimerReset,
 } from "lucide-react";
 import Image from "next/image";
 import styles from "./sidebar.module.css";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -24,6 +28,24 @@ const navItems = [
 ];
 
 export function Sidebar({ isOpen, onToggle }: SidebarProps) {
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  const frame = requestAnimationFrame(() => {
+    setMounted(true);
+  });
+
+  return () => cancelAnimationFrame(frame);
+}, []);
+
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
+  const isDark = currentTheme === "dark";
+
+  const handleThemeToggle = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
+
   return (
     <aside
       className={cn(
@@ -31,8 +53,15 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
         isOpen ? styles.sidebarOpen : styles.sidebarClosed,
       )}
     >
-      <button className={styles.toggle} onClick={onToggle}>
-        <ChevronLeft />
+      <button
+        type="button"
+        className={styles.toggle}
+        onClick={onToggle}
+        aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}
+      >
+        <ChevronLeft
+          className={cn(styles.chevron, !isOpen && styles.chevronClosed)}
+        />
       </button>
 
       <div>
@@ -61,6 +90,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
             return (
               <button
                 key={item.label}
+                type="button"
                 className={cn(
                   styles.navItem,
                   isOpen ? styles.navItemOpen : styles.navItemClosed,
@@ -84,37 +114,35 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
       </div>
 
       <div className={styles.footer}>
-        <button
-          className={cn(
-            styles.navItem,
-            isOpen ? styles.navItemOpen : styles.navItemClosed,
-          )}
-        >
-          <Settings size={20} />
-
-          <span
-            className={cn(
-              styles.text,
-              isOpen ? styles.textVisible : styles.textHidden,
-            )}
-          >
-            Settings
-          </span>
-        </button>
-
         <div
           className={cn(
             styles.theme,
             isOpen ? styles.themeVisible : styles.themeHidden,
           )}
         >
-          <div className={styles.themeInner}>
-            <div style={{ display: "flex", gap: 8 }}>
-              <Moon size={16} />
-              <span>Night mode</span>
+          <button
+            type="button"
+            className={styles.themeInner}
+            onClick={handleThemeToggle}
+            disabled={!mounted}
+            aria-label="Toggle theme"
+          >
+            <div className={styles.themeLabel}>
+              {mounted ? (
+                isDark ? <Moon size={16} /> : <Sun size={16} />
+              ) : (
+                <Moon size={16} />
+              )}
+
+              <span>
+                {mounted ? (isDark ? "Night mode" : "Day mode") : "Theme"}
+              </span>
             </div>
-            <div>●</div>
-          </div>
+
+            <div className={styles.themeStatus}>
+              {mounted ? (isDark ? "●" : "○") : "○"}
+            </div>
+          </button>
         </div>
       </div>
     </aside>

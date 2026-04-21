@@ -13,9 +13,12 @@
     rgba(7, 8, 18, 0.98) 100%
   );
 
-  /* border-right: 1px solid rgba(255, 255, 255, 0.1); */
+  overflow: visible;
 
-  transition: width 0.3s ease;
+  transition:
+    width 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease;
 }
 
 .sidebarOpen {
@@ -47,11 +50,17 @@
   background: #141327;
   color: rgba(255, 255, 255, 0.7);
 
-  transition: 0.2s;
+  transition:
+    color 0.2s ease,
+    transform 0.25s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+  z-index: 20;
 }
 
 .toggle:hover {
   color: white;
+  transform: scale(1.05);
 }
 
 /* Logo */
@@ -61,6 +70,11 @@
   min-height: 48px;
   margin-bottom: 40px;
   overflow: hidden;
+
+  transition:
+    gap 0.3s ease,
+    padding 0.3s ease,
+    justify-content 0.3s ease;
 }
 
 .logoOpen {
@@ -80,7 +94,10 @@
   white-space: nowrap;
   overflow: hidden;
 
-  transition: all 0.3s ease;
+  transition:
+    max-width 0.28s ease,
+    opacity 0.2s ease,
+    transform 0.28s ease;
 }
 
 .logoTextHidden {
@@ -93,6 +110,7 @@
   max-width: 120px;
   opacity: 1;
   transform: translateX(0);
+  transition-delay: 0.08s;
 }
 
 /* Navigation */
@@ -110,9 +128,14 @@
 
   color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
-
-  transition: all 0.3s ease;
   overflow: hidden;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    gap 0.3s ease,
+    padding 0.3s ease,
+    transform 0.2s ease;
 }
 
 .navItemOpen {
@@ -131,7 +154,6 @@
     rgba(255, 255, 255, 0.16),
     rgba(255, 255, 255, 0.08)
   );
-
   color: white;
 }
 
@@ -139,7 +161,11 @@
 .text {
   white-space: nowrap;
   overflow: hidden;
-  transition: all 0.3s ease;
+
+  transition:
+    max-width 0.28s ease,
+    opacity 0.2s ease,
+    transform 0.28s ease;
 }
 
 .textHidden {
@@ -152,6 +178,7 @@
   max-width: 140px;
   opacity: 1;
   transform: translateX(0);
+  transition-delay: 0.08s;
 }
 
 /* Footer */
@@ -159,31 +186,108 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: auto;
 }
 
 /* Theme switch */
 .theme {
   overflow: hidden;
-  transition: all 0.3s ease;
+
+  transition:
+    max-height 0.3s ease,
+    opacity 0.22s ease,
+    transform 0.3s ease,
+    margin-top 0.3s ease;
 }
 
 .themeHidden {
   max-height: 0;
   opacity: 0;
+  transform: translateY(-6px);
+  margin-top: 0;
+  pointer-events: none;
 }
 
 .themeVisible {
   max-height: 80px;
   opacity: 1;
+  transform: translateY(0);
+  margin-top: 0;
+  transition-delay: 0.08s;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevronClosed {
+  transform: rotate(180deg);
+}
+
+.themeLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.themeStatus {
+  line-height: 1;
 }
 
 .themeInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 
   padding: 12px;
   border-radius: 14px;
 
   background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.themeInner:hover {
+  transform: translateY(-1px);
+}
+
+:global(.light) .sidebar {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(241, 245, 249, 0.98) 100%
+  );
+}
+
+:global(.light) .logoText {
+  color: rgba(15, 23, 42, 0.92);
+}
+
+:global(.light) .navItem {
+  color: rgba(15, 23, 42, 0.68);
+}
+
+:global(.light) .navItemActive {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.08),
+    rgba(15, 23, 42, 0.04)
+  );
+  color: rgba(15, 23, 42, 1);
+}
+
+:global(.light) .toggle {
+  background: white;
+  color: rgba(15, 23, 42, 0.72);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(.light) .themeInner {
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.92);
 }

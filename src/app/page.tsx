@@ -3,21 +3,21 @@
 import { useState } from "react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { WelcomeHero } from "@/components/states/welcome-hero";
-import styles from "./page.module.css";
+import { ui } from "@/components/ui/ui";
 
 export default function Page() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <main className={styles.page}>
-      <div className={styles.frame}>
+    <main className={ui.page}>
+      <div className={ui.appFrame}>
         <Sidebar
           isOpen={isSidebarOpen}
           onToggle={() => setIsSidebarOpen((prev) => !prev)}
         />
 
-        <section className={styles.content}>
-          <div className={styles.contentGlow} />
+        <section className={ui.content}>
+          <div className={ui.contentGlow} />
           <WelcomeHero />
         </section>
       </div>
