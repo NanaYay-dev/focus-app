@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Modal } from "@/components/ui/modal/modal";
+import { Input } from "@/components/ui/input";
 import type { Task } from "./types";
 import styles from "./kanban.module.css";
+
 
 type TaskCreateModalProps = {
   isOpen: boolean;
@@ -39,13 +41,12 @@ export function TaskCreateModal({
       subtitle="Start with a simple task. Details will come later."
       onClose={onClose}
     >
-      <input
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-        className={styles.input}
-        placeholder="Task title..."
-        autoFocus
-      />
+<Input
+  value={title}
+  onChange={(event) => setTitle(event.target.value)}
+  placeholder="Task title..."
+  autoFocus
+/>
 
       <div className={styles.modalActions}>
         <button type="button" className={styles.cancelButton} onClick={onClose}>

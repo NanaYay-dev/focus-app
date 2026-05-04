@@ -28,7 +28,6 @@ const navItems: { label: string; view: View; icon: typeof House }[] = [
   { label: "Home", view: "home", icon: House },
   { label: "Timer", view: "timer", icon: TimerReset },
   { label: "Kanban", view: "kanban", icon: KanbanSquare },
-  { label: "Stats", view: "stats", icon: ChartColumn },
 ];
 
 export function Sidebar({

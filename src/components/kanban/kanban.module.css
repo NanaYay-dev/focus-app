@@ -26,35 +26,64 @@
 .kicker {
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-secondary);
 }
 
 .title {
   margin-top: 6px;
   font-size: 32px;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .subtitle {
   margin-top: 8px;
   max-width: 520px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
 }
 
 .addButton {
   padding: 10px 18px;
   border-radius: 999px;
-  background: white;
-  color: black;
+  background: var(--text-primary);
+  color: var(--bg);
   font-size: 14px;
   font-weight: 500;
+  /* box-shadow: var(--button-shadow); */
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .addButton:hover {
   transform: scale(1.03);
+}
+
+/* MODAL FORM */
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton,
+.createButton {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.cancelButton {
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.createButton {
+  color: var(--bg);
+  background: var(--text-primary);
+  /* box-shadow: var(--button-shadow); */
 }
 
 /* COLUMNS */
@@ -80,15 +109,16 @@
   width: 100%;
   padding: 20px;
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  /* box-shadow: var(--glass-shadow); */
   backdrop-filter: blur(20px);
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .columnOver {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--ring);
+  background: var(--bg-elevated);
 }
 
 .columnHeader {
@@ -101,21 +131,22 @@
 .columnTitle {
   font-size: 15px;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .columnSubtitle {
   margin-top: 4px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-secondary);
 }
 
 .count {
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
+  background: var(--bg-card);
 }
 
 .cards {
@@ -126,13 +157,13 @@
 
 .emptyColumn {
   min-height: 120px;
-  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border: 1px dashed var(--border);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
 }
 
 /* CARD */
@@ -142,15 +173,19 @@
   border-radius: 20px;
   cursor: grab;
   touch-action: none;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease,
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-elevated);
 }
 
 .card:active {
@@ -177,27 +212,28 @@
 .badge {
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
 }
 
 .cardTitle {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .cardDesc {
   margin-top: 6px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
 }
 
 .focusTime {
   margin-top: 12px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-secondary);
 }
 
 /* PROGRESS */
@@ -211,18 +247,18 @@
   justify-content: space-between;
   margin-bottom: 8px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-secondary);
 }
 
 .progressTrack {
   height: 5px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border);
 }
 
 .progressValue {
   height: 100%;
   border-radius: 999px;
-  background: white;
+  background: var(--text-primary);
 }

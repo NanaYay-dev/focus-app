@@ -149,11 +149,8 @@
 }
 
 .navItemActive {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.16),
-    rgba(255, 255, 255, 0.08)
-  );
+    background: #ffffff0a;
+    border: 1px solid #ffffff14;
   color: white;
 }
 
