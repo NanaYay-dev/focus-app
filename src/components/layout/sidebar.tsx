@@ -15,29 +15,38 @@ import styles from "./sidebar.module.css";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 
+type View = "home" | "timer" | "kanban" | "stats";
+
 type SidebarProps = {
   isOpen: boolean;
   onToggle: () => void;
+  activeView: View;
+  onViewChange: (view: View) => void;
 };
 
-const navItems = [
-  { label: "Home", icon: House, active: true },
-  { label: "Timer", icon: TimerReset, active: false },
-  { label: "Kanban", icon: KanbanSquare, active: false },
-  { label: "Stats", icon: ChartColumn, active: false },
+const navItems: { label: string; view: View; icon: typeof House }[] = [
+  { label: "Home", view: "home", icon: House },
+  { label: "Timer", view: "timer", icon: TimerReset },
+  { label: "Kanban", view: "kanban", icon: KanbanSquare },
+  { label: "Stats", view: "stats", icon: ChartColumn },
 ];
 
-export function Sidebar({ isOpen, onToggle }: SidebarProps) {
+export function Sidebar({
+  isOpen,
+  onToggle,
+  activeView,
+  onViewChange,
+}: SidebarProps) {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-useEffect(() => {
-  const frame = requestAnimationFrame(() => {
-    setMounted(true);
-  });
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
 
-  return () => cancelAnimationFrame(frame);
-}, []);
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const currentTheme = theme === "system" ? resolvedTheme : theme;
   const isDark = currentTheme === "dark";
@@ -88,15 +97,16 @@ useEffect(() => {
             const Icon = item.icon;
 
             return (
-              <button
-                key={item.label}
-                type="button"
-                className={cn(
-                  styles.navItem,
-                  isOpen ? styles.navItemOpen : styles.navItemClosed,
-                  item.active && styles.navItemActive,
-                )}
-              >
+<button
+  key={item.label}
+  type="button"
+  onClick={() => onViewChange(item.view)}
+  className={cn(
+    styles.navItem,
+    isOpen ? styles.navItemOpen : styles.navItemClosed,
+    activeView === item.view && styles.navItemActive,
+  )}
+>
                 <Icon size={20} />
 
                 <span
@@ -129,7 +139,11 @@ useEffect(() => {
           >
             <div className={styles.themeLabel}>
               {mounted ? (
-                isDark ? <Moon size={16} /> : <Sun size={16} />
+                isDark ? (
+                  <Moon size={16} />
+                ) : (
+                  <Sun size={16} />
+                )
               ) : (
                 <Moon size={16} />
               )}
