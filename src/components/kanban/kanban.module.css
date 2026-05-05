@@ -30,7 +30,6 @@
 }
 
 .title {
-  margin-top: 6px;
   font-size: 32px;
   font-weight: 600;
   color: var(--text-primary);
@@ -236,6 +235,137 @@
   color: var(--text-secondary);
 }
 
+
+.segmentedControl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 5px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-elevated);
+}
+
+.segmentButton {
+  min-height: 34px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segmentButton:hover {
+  color: var(--text-primary);
+}
+
+.segmentButtonActive {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  /* box-shadow: var(--button-shadow); */
+}
+
+.priorityRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.priorityButton {
+  min-height: 36px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.priorityButtonActive {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  /* box-shadow: var(--button-shadow); */
+}
+
+.subtaskCreateBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtaskInputRow {
+  display: grid;
+  grid-template-columns: 1fr 42px;
+  gap: 8px;
+}
+
+.addSubtaskButton {
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* CARD OVERLAY */
+
+.secondaryTasks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.secondaryCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 9px 10px;
+  border-radius: 12px;
+
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.secondaryCheck {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+
+  border: 1px solid var(--ring);
+  background: var(--bg-card);
+
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.secondaryTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.secondaryCardDone {
+  opacity: 0.55;
+}
+
+.secondaryCardDone .secondaryTitle {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
 /* PROGRESS */
 
 .progressBlock {
@@ -261,4 +391,45 @@
   height: 100%;
   border-radius: 999px;
   background: var(--text-primary);
+}
+
+
+.deadlineField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+
+
+.datePickerInput {
+  width: 100%;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--input-bg);
+  /* ← ВАЖНО */
+  color: var(--text-primary);
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+}
+
+.datePickerInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.datePickerInput:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px var(--glow-blue);
+}
+
+.datePickerPopper {
+  z-index: 200;
 }

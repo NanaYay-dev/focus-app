@@ -54,3 +54,27 @@ body {
     background-color 0.25s ease,
     color 0.25s ease;
 }
+
+/* React Datepicker */
+
+
+.react-datepicker {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  backdrop-filter: none;
+}
+
+.react-datepicker__header {
+  background: transparent;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.react-datepicker__time-container {
+  background: transparent;
+}
+
+.react-datepicker__time {
+  background: transparent;
+}

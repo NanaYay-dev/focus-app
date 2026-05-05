@@ -132,7 +132,6 @@ export function KanbanBoard() {
     <section className={styles.board}>
       <div className={styles.header}>
         <div className={styles.titleBlock}>
-          <span className={styles.kicker}>Focus OS</span>
           <h1 className={styles.title}>Kanban board</h1>
           <p className={styles.subtitle}>Simple task flow for now...</p>
         </div>

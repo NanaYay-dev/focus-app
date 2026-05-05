@@ -71,23 +71,44 @@ export function KanbanCard({ task, isOverlay = false }: KanbanCardProps) {
         <p className={styles.cardDesc}>{task.description}</p>
       )}
 
-      {totalSubtasks > 0 && (
-        <div className={styles.progressBlock}>
-          <div className={styles.progressMeta}>
-            <span>Subtasks</span>
-            <span>
-              {completedSubtasks}/{totalSubtasks}
-            </span>
-          </div>
+{totalSubtasks > 0 && (
+  <>
+    <div className={styles.progressBlock}>
+      <div className={styles.progressMeta}>
+        <span>Subtasks</span>
+        <span>
+          {completedSubtasks}/{totalSubtasks}
+        </span>
+      </div>
 
-          <div className={styles.progressTrack}>
-            <div
-              className={styles.progressValue}
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+      <div className={styles.progressTrack}>
+        <div
+          className={styles.progressValue}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    </div>
+
+    <div className={styles.secondaryTasks}>
+      {task.subtasks?.map((subtask) => (
+        <div
+          key={subtask.id}
+          className={`${styles.secondaryCard} ${
+            subtask.done ? styles.secondaryCardDone : ""
+          }`}
+        >
+          <span className={styles.secondaryCheck}>
+            {subtask.done ? "✓" : ""}
+          </span>
+
+          <span className={styles.secondaryTitle}>
+            {subtask.title}
+          </span>
         </div>
-      )}
+      ))}
+    </div>
+  </>
+)}
 
       {task.focusMinutes && (
         <p className={styles.focusTime}>Focus time: {task.focusMinutes} min</p>

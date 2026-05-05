@@ -11,12 +11,12 @@
 }
 
 .modal {
-  width: min(420px, 100%);
+  width: min(520px, 100%);
   padding: 22px;
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(18, 18, 24, 0.92);
-  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  /* box-shadow: var(--glass-shadow); */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -31,21 +31,31 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .subtitle {
   margin-top: 6px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-secondary);
 }
 
 .closeButton {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
   width: 30px;
   height: 30px;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.55);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
   font-size: 20px;
   line-height: 1;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
 }
