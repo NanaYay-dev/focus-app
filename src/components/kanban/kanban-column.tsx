@@ -8,6 +8,7 @@ type KanbanColumnProps = {
   subtitle: string;
   status: TaskStatus;
   tasks: Task[];
+  onToggleSubtask: (taskId: string, subtaskId: string) => void;
 };
 
 export function KanbanColumn({
@@ -15,6 +16,7 @@ export function KanbanColumn({
   subtitle,
   status,
   tasks,
+  onToggleSubtask,
 }: KanbanColumnProps) {
   const { setNodeRef, isOver } = useDroppable({
     id: status,
@@ -36,7 +38,11 @@ export function KanbanColumn({
 
       <div className={styles.cards}>
         {tasks.map((task) => (
-          <KanbanCard key={task.id} task={task} />
+          <KanbanCard
+            key={task.id}
+            task={task}
+            onToggleSubtask={onToggleSubtask}
+          />
         ))}
 
         {tasks.length === 0 && (

@@ -128,6 +128,23 @@ export function KanbanBoard() {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
 
+  const toggleSubtask = (taskId: string, subtaskId: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id !== taskId) return task;
+
+        return {
+          ...task,
+          subtasks: task.subtasks?.map((subtask) =>
+            subtask.id === subtaskId
+              ? { ...subtask, done: !subtask.done }
+              : subtask,
+          ),
+        };
+      }),
+    );
+  };
+
   return (
     <section className={styles.board}>
       <div className={styles.header}>
@@ -168,6 +185,7 @@ export function KanbanBoard() {
                   subtitle={column.subtitle}
                   status={column.id}
                   tasks={columnTasks}
+                  onToggleSubtask={toggleSubtask}
                 />
               </SortableContext>
             );
@@ -175,7 +193,13 @@ export function KanbanBoard() {
         </div>
 
         <DragOverlay>
-          {activeTask ? <KanbanCard task={activeTask} isOverlay /> : null}
+          {activeTask ? (
+            <KanbanCard
+              task={activeTask}
+              isOverlay
+              onToggleSubtask={toggleSubtask}
+            />
+          ) : null}
         </DragOverlay>
       </DndContext>
 
