@@ -1,0 +1,529 @@
+.page {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100%;
+  padding: 32px 20px;
+  color: var(--text-primary);
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.kicker {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.title {
+  margin-top: 6px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin-top: 10px;
+  max-width: 620px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.ticketGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.ticket {
+  position: relative;
+  overflow: hidden;
+  min-height: 142px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 34%),
+    linear-gradient(135deg, #f6f2f0, #d8d6d8);
+  color: #1f1f24;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 30px;
+  border-radius: 999px;
+  background: #16151c;
+  transform: translateY(-50%);
+}
+
+.ticket::before {
+  left: -9px;
+}
+
+.ticket::after {
+  right: -9px;
+}
+
+.ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+.ticketSelected {
+  border-color: rgba(160, 92, 255, 0.9);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.32),
+    0 0 0 3px rgba(160, 92, 255, 0.18);
+}
+
+.ticketTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.barcode {
+  font-size: 13px;
+  letter-spacing: -0.18em;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.ticketBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 10px;
+}
+
+.ticketBottom strong {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.smallLabel {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  color: rgba(31, 31, 36, 0.58);
+}
+
+.ticketLabel {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(31, 31, 36, 0.62);
+}
+
+.panel {
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  background: var(--bg-card);
+  padding: 22px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+}
+
+.panelLabel {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.panelTitle {
+  margin-top: 14px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.panelText {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.inputGroup {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: 0 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px var(--glow-blue);
+}
+
+.startButton,
+.secondaryButton,
+.exitButton {
+  height: 44px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.startButton {
+  width: 100%;
+  margin-top: 18px;
+  background: white;
+  color: #121217;
+}
+
+
+
+
+.sessionTitle {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--text-primary);
+}
+
+.sessionMeta {
+  margin-top: 18px;
+}
+
+.flightRoute {
+  display: grid;
+  grid-template-columns: auto minmax(80px, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.flightDuration {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.focusPage {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: 32px 20px;
+}
+
+.focusCard {
+  width: min(620px, 100%);
+  border: 1px solid var(--glass-border);
+  border-radius: 34px;
+  background: var(--bg-card);
+  padding: 36px;
+  text-align: center;
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.26);
+}
+
+.focusTitle {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.bigTimer {
+  margin-top: 28px;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.focusProgressTrack {
+  overflow: hidden;
+  height: 10px;
+  margin-top: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.focusProgressValue {
+  height: 100%;
+  border-radius: inherit;
+  background: white;
+  transition: width 250ms ease;
+}
+
+.focusActions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.secondaryButton {
+  background: white;
+  color: #121217;
+}
+
+.exitButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ticketGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flightScreen {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  color: var(--text-primary);
+}
+
+.flightInner {
+  width: min(680px, 100%);
+  padding: 48px;
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  background: var(--bg-card);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+}
+
+
+.flightKicker {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.flightRoute {
+  display: grid;
+  grid-template-columns: auto minmax(80px, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  margin-top: 12px;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.flightRoute span:first-child,
+.flightRoute span:last-child {
+  color: var(--text-primary);
+}
+
+.routeDivider {
+  position: relative;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.routeDivider span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--text-secondary) !important;
+  font-size: 16px;
+  transform: translate(-50%, -50%);
+}
+
+.flightDuration {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.flightTaskName {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.flightLineWrap {
+  margin-top: 54px;
+  padding-bottom: 58px;
+}
+
+.flightLine {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+}
+
+.flightLineActive {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: var(--text-primary);
+  transition: width 500ms linear;
+}
+
+.flightPlane {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 50px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+
+
+.pointStart,
+.pointBreak,
+.pointEnd {
+  position: absolute;
+  top: -7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.pointStart {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.pointPassed {
+  background: white;
+  border-color: white;
+}
+
+.pointBreak {
+  left: 72%;
+  transform: translateX(-50%);
+}
+
+.pointEnd {
+  right: 0;
+  transform: translateX(50%);
+}
+
+.mapPin,
+.circlePoint {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid var(--glass-border);
+  background: #1F1F24;
+}
+
+.mapPin.pointPassed,
+.circlePoint.pointPassed {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.referenceTimerCard {
+  width: min(440px, 100%);
+  margin: 8px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 22px 24px;
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  background: var(--bg-elevated);
+}
+
+.referenceTimerLabel {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.referenceTimer {
+  font-size: clamp(58px, 10vw, 82px);
+  font-weight: 750;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  color: var(--text-primary);
+}
+
+.referencePause {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.referenceEnd {
+  display: block;
+  margin: 24px auto 0;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0 18px;
+  cursor: pointer;
+}

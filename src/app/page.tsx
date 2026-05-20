@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { WelcomeHero } from "@/components/states/welcome-hero";
 import { KanbanBoard } from "@/components/kanban/kanban-board";
+import { SessionsPage } from "@/components/sessions/sessions-page";
 import { ui } from "@/components/ui/ui";
 
 type View = "home" | "timer" | "kanban" | "stats";
@@ -27,7 +28,7 @@ export default function Page() {
 
           {activeView === "home" && <WelcomeHero />}
           {activeView === "kanban" && <KanbanBoard />}
-          {activeView === "timer" && <div>Timer screen soon</div>}
+          {activeView === "timer" && <SessionsPage />}
           {activeView === "stats" && <div>Stats screen soon</div>}
         </section>
       </div>
